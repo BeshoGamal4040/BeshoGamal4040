@@ -1,0 +1,18 @@
+name: Metrics
+on:
+  schedule:
+    - cron: '0 0 * * *'   # runs once a day
+  workflow_dispatch:        # lets you trigger it manually too
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, community, repositories, metadata
+          plugin_languages: yes

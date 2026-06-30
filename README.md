@@ -34,53 +34,60 @@
 
 ### 📌 Featured Projects
 
-<table>
-  <tr>
-    <td width="50%">
-      <a href="https://github.com/BeshoGamal4040/DNN-Model_From_Scratch">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BeshoGamal4040&repo=DNN-Model_From_Scratch&theme=tokyonight" />
-      </a>
-    </td>
-    <td width="50%">
-      <a href="https://github.com/BeshoGamal4040/CNN_Binary_Classifier_CatsVsDogs">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BeshoGamal4040&repo=CNN_Binary_Classifier_CatsVsDogs&theme=tokyonight" />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <a href="https://github.com/BeshoGamal4040/Credit_Card_Fraud_Detection_Model">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BeshoGamal4040&repo=Credit_Card_Fraud_Detection_Model&theme=tokyonight" />
-      </a>
-    </td>
-    <td width="50%">
-      <a href="https://github.com/BeshoGamal4040/EchoMe_Project">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=BeshoGamal4040&repo=EchoMe_Project&theme=tokyonight" />
-      </a>
-    </td>
-  </tr>
-</table>
+| Project | Description |
+|---|---|
+| 🧠 [**DNN-Model_From_Scratch**](https://github.com/BeshoGamal4040/DNN-Model_From_Scratch) | A deep neural network built from raw math — no TensorFlow/PyTorch shortcuts — trained on Fashion-MNIST |
+| 🐱🐶 [**CNN_Binary_Classifier_CatsVsDogs**](https://github.com/BeshoGamal4040/CNN_Binary_Classifier_CatsVsDogs) | CNN built with TensorFlow/Keras to classify cats vs. dogs |
+| 💳 [**Credit_Card_Fraud_Detection_Model**](https://github.com/BeshoGamal4040/Credit_Card_Fraud_Detection_Model) | ML model for detecting fraudulent credit card transactions |
+| 🗣️ [**EchoMe_Project**](https://github.com/BeshoGamal4040/EchoMe_Project) | Offline multimodal AI avatar system — Whisper + Aya + XTTS + Wav2Lip |
+| 🐍 [**Python-AI-Learning**](https://github.com/BeshoGamal4040/Python-AI-Learning) | Python exercises and assignments completed while learning the language |
+| 🎚️ [**matlab-Audio-Signal-Processing-APP**](https://github.com/BeshoGamal4040/matlab-Audio-Signal-Processing-APP) | MATLAB app for audio signal processing |
 
 ---
 
 ### 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=BeshoGamal4040&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=BeshoGamal4040&theme=tokyonight&hide_border=true" alt="GitHub Streak" height="165"/>
+  <img src="./github-metrics.svg" alt="GitHub Stats" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=BeshoGamal4040&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" height="165"/>
-</p>
+> Stats above are generated automatically once a day by a GitHub Actions workflow in this repo (see setup steps below) — no third-party server required, so they won't break if an external service goes down.
 
----
+<details>
+<summary>⚙️ One-time setup for the auto-updating stats (click to expand)</summary>
 
-### 📈 Contribution Graph
+In your `BeshoGamal4040/BeshoGamal4040` repo:
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=BeshoGamal4040&theme=tokyo-night&hide_border=true" alt="Contribution Graph" />
-</p>
+1. Create a **classic** Personal Access Token: go to [github.com/settings/tokens/new](https://github.com/settings/tokens/new), give it the `repo` and `read:user` scopes, no expiration if you don't mind renewing later.
+2. In your repo, go to **Settings → Secrets and variables → Actions → New repository secret**, name it `METRICS_TOKEN`, and paste the token as the value. (The action needs a personal token, not the default `GITHUB_TOKEN`, because it has to read data outside this one repo.)
+3. Create a file at `.github/workflows/metrics.yml` with:
+
+```yaml
+name: Metrics
+on:
+  schedule:
+    - cron: '0 0 * * *'   # runs once a day
+  workflow_dispatch:        # lets you trigger it manually too
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, community, repositories, metadata
+          plugin_languages: yes
+```
+
+Commit that file, then go to the **Actions** tab and click **Run workflow** to trigger it the first time.
+
+That run commits a fresh `github-metrics.svg` straight into your repo — which is the image referenced above. Because the file lives in your own repo instead of being fetched from someone else's server, it can't silently go down the way the Vercel-hosted cards did.
+
+</details>
 
 ---
 
